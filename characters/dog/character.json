@@ -82,7 +82,7 @@
     "rate": 1.25,
     "gender": "m",
     "edge": "th-TH-NiwatNeural",
-    "edgeRate": "+20%",
-    "edgePitch": "+45Hz"
+    "edgeRate": "+15%",
+    "edgePitch": "+25Hz"
   }
 }
