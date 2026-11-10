@@ -580,7 +580,7 @@ const doodle = {
 function place(box, html, x, y, rot = 0, op = 1) { const d = document.createElement('div'); d.innerHTML = html; const el = d.firstElementChild; el.style.left = x + 'px'; el.style.top = y + 'px'; el.style.transform = `rotate(${rot}deg)`; el.style.opacity = op; box.appendChild(el); }
 function decorate() {
   $$('.brand').forEach(b => b.innerHTML = `<div class="uno"><span>U</span><span>N</span><span>O</span></div><div class="kt"><span class="hl pink">คอแตก</span></div><p class="tag"><span class="hl cyan">ไพ่ปั่นๆ</span> เล่นกับเพื่อน ตะโกนจนคอแตก</p>`);
-  const spots = [[6, 40, -8], [124, 10, 6], [242, 40, -4], [354, 14, 8], [70, 120, 4], [300, 116, -6]];
+  const spots = [[14, 0, -6], [176, 10, 5], [336, 0, -4], [34, 138, 4], [196, 142, -5], [352, 136, 6]];
   $$('.cluster').forEach(cl => { cl.innerHTML = ORDER.slice(0, 6).map((id, i) => { const [x, y, r] = spots[i]; return `<img src="${img(id)}" alt="" style="left:${x}px;top:${y}px;--r:${r}deg">`; }).join('') ; });
   $$('.deskdeco').forEach(dd => { dd.innerHTML = ''; place(dd, pencil('#E87D9D'), 20, 668, -4); place(dd, pencil('#62B2E6', 220), 980, 14, 12); place(dd, pencil('#F3CF3E', 200), 1040, 52, 8); place(dd, doodle.eraser(), 1150, 640, 0); place(dd, doodle.star('#E87D9D'), 1210, 300, 10, .8); place(dd, doodle.heart('#62B2E6'), 14, 260, -10, .7); });
   const g = $('.gdeco'); g.innerHTML = '';
