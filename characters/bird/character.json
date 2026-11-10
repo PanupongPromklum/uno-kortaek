@@ -76,7 +76,77 @@
       "ไม่เป็นไร"
     ]
   },
-  "voice": {},
+  "voice": {
+    "catch": [
+      "catch_1.mp3",
+      "catch_2.mp3",
+      "catch_3.mp3"
+    ],
+    "caught": [
+      "caught_1.mp3",
+      "caught_2.mp3",
+      "caught_3.mp3"
+    ],
+    "draw2": [
+      "draw2_1.mp3",
+      "draw2_2.mp3",
+      "draw2_3.mp3"
+    ],
+    "hit2": [
+      "hit2_1.mp3",
+      "hit2_2.mp3",
+      "hit2_3.mp3"
+    ],
+    "hit4": [
+      "hit4_1.mp3",
+      "hit4_2.mp3",
+      "hit4_3.mp3"
+    ],
+    "lose": [
+      "lose_2.mp3",
+      "lose_3.mp3"
+    ],
+    "reverse": [
+      "reverse_1.mp3",
+      "reverse_2.mp3",
+      "reverse_3.mp3"
+    ],
+    "skip": [
+      "skip_1.mp3",
+      "skip_2.mp3",
+      "skip_3.mp3"
+    ],
+    "skipped": [
+      "skipped_1.mp3",
+      "skipped_2.mp3",
+      "skipped_3.mp3"
+    ],
+    "start": [
+      "start_1.mp3",
+      "start_2.mp3",
+      "start_3.mp3"
+    ],
+    "uno": [
+      "uno_1.mp3",
+      "uno_2.mp3",
+      "uno_3.mp3"
+    ],
+    "wild4": [
+      "wild4_1.mp3",
+      "wild4_2.mp3",
+      "wild4_3.mp3"
+    ],
+    "wild": [
+      "wild_1.mp3",
+      "wild_2.mp3",
+      "wild_3.mp3"
+    ],
+    "win": [
+      "win_1.mp3",
+      "win_2.mp3",
+      "win_3.mp3"
+    ]
+  },
   "tts": {
     "pitch": 0.8,
     "rate": 0.9,
