@@ -1,7 +1,7 @@
 // Room / lobby state machine (pure). Mutates `room` (rooms row) and returns { error?, game }.
 import * as E from './engine.js';
 export const MAX_PLAYERS = 6;
-const CHAR_RE = /^[a-z0-9_-]{1,24}$/;
+const CHAR_RE = /^[A-Za-z0-9_-]{1,24}$/;
 
 const humans = r => r.players.filter(p => !p.bot);
 function pushEvents(room, list) {
