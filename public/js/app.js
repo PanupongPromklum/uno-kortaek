@@ -458,8 +458,9 @@ function animDraw(ev) {
   }, i * 110);
 }
 function pickLine(char, ev) {
-  const c = ch(char), arr = (c.lines && c.lines[ev]) || []; if (!arr.length) return null;
-  const i = Math.floor(Math.random() * arr.length), files = (c.voice && c.voice[ev]) || [];
+  const c = ch(char), arr = (c.lines && c.lines[ev]) || [], files = (c.voice && c.voice[ev]) || [];
+  if (!arr.length) return files.length ? { text: '', file: files[Math.floor(Math.random() * files.length)] } : null;
+  const i = Math.floor(Math.random() * arr.length);
   return { text: arr[i], file: files.find(f => f.startsWith(`${ev}_${i + 1}.`)) || null };
 }
 function speak(char, ev) { const l = pickLine(char, ev); if (!l) return { text: '', dur: 0 }; return { text: l.text, dur: Snd.say(char, l.file, l.text, ch(char).tts) }; }
@@ -486,7 +487,7 @@ async function runCut() {
   cutBusy = false;
 }
 async function showBubble(pid, char, ev) {
-  const { text, dur } = speak(char, ev); if (!text) return;
+  const { text, dur } = speak(char, ev); if (!text) { if (dur) await sleep(dur * 1000); return; }
   const el = [...document.querySelectorAll('.screen.active .frame')].find(f => f.dataset.id === pid);
   let pos = { x: 640, y: 200 };
   if (el) { const r = el.getBoundingClientRect(); pos = toStage(r.left + r.width / 2, r.top + 8); }

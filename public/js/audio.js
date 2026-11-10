@@ -127,16 +127,8 @@ const Snd = (() => {
       const s = ctx.createBufferSource(); s.buffer = buf; s.connect(voiceBus); s.start(); voiceSrc = s;
       duck(buf.duration); return buf.duration;
     }
-    if (!('speechSynthesis' in window) || !text) return 0;
-    try {
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text); u.lang = 'th-TH';
-      const v = ttsVoice(tts.gender); if (v) u.voice = v;
-      u.pitch = Math.min(2, tts.pitch || 1.2); u.rate = Math.min(1.6, tts.rate || 1.05); u.volume = 1;
-      speechSynthesis.speak(u);
-    } catch {}
-    const est = 0.45 + text.length * 0.075 / (tts.rate || 1);
-    duck(est); return est;
+    // ไม่มีไฟล์เสียงอัด → ไม่พูด (ปิดเสียง AI อ่านแล้ว) แสดงแค่ข้อความ
+    return 0;
   }
   function duck(sec) { if (!ctx || !bgmBus || !musicOn || bgmFile) return; const t = ctx.currentTime; bgmBus.gain.cancelScheduledValues(t); bgmBus.gain.setTargetAtTime(.22, t, .05); bgmBus.gain.setTargetAtTime(.55, t + sec + .2, .4); }
 

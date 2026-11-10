@@ -1,0 +1,83 @@
+{
+  "name": "PAI",
+  "title": "กระต่ายแก้มชมพู",
+  "color": "#E9B967",
+  "light": "#FFF2CC",
+  "accent": "#F5A9BF",
+  "lines": {
+    "uno": [
+      "อูโน่! เหลือใบเดียวแล้ว"
+    ],
+    "skip": [
+      "ขอข้ามก่อนนะ"
+    ],
+    "reverse": [
+      "วนกลับมาแล้ว!"
+    ],
+    "draw2": [
+      "รับไปสองใบเลย"
+    ],
+    "wild": [
+      "เปลี่ยนสีแล้วนะ"
+    ],
+    "wild4": [
+      "สี่ใบจัดไป!"
+    ],
+    "catch": [
+      "ลืมอูโน่ใช่ไหม!"
+    ],
+    "win": [
+      "เย้! ชนะแล้ว"
+    ],
+    "lose": [
+      "แง… ขอแก้มือ"
+    ],
+    "taunt": [
+      "จั่วเพลินเลยนะ"
+    ]
+  },
+  "voice": {
+    "catch": [
+      "catch_1.mp3"
+    ],
+    "caught": [
+      "caught_1.mp3"
+    ],
+    "draw2": [
+      "draw2_1.mp3"
+    ],
+    "hit2": [
+      "hit2_1.mp3"
+    ],
+    "hit4": [
+      "hit4_1.mp3"
+    ],
+    "lose": [
+      "lose_1.mp3"
+    ],
+    "reverse": [
+      "reverse_1.mp3"
+    ],
+    "skip": [
+      "skip_1.mp3"
+    ],
+    "skipped": [
+      "skipped_1.mp3"
+    ],
+    "start": [
+      "start_1.mp3"
+    ],
+    "uno": [
+      "uno_1.mp3"
+    ],
+    "wild4": [
+      "wild4_1.mp3"
+    ],
+    "wild": [
+      "wild_1.mp3"
+    ],
+    "win": [
+      "win_1.mp3"
+    ]
+  }
+}
