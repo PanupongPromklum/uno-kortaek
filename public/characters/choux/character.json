@@ -79,7 +79,7 @@
   "voice": {},
   "tts": {
     "pitch": 1.7,
-    "rate": 1.0,
+    "rate": 1,
     "gender": "f",
     "edge": "th-TH-PremwadeeNeural",
     "edgeRate": "+0%",
