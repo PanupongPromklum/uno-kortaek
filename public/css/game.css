@@ -304,3 +304,12 @@ input:focus{border-color:var(--pop)}
 .brand .uno span{font-size:112px}
 .brand .kt{left:140px;top:138px}
 .brand .tag{top:228px}
+/* v4.1: centered notebook, equal pages, non-overlapping character stickers */
+.book{left:50%;top:50%;transform:translate(-50%,-50%);width:1120px;height:600px}
+.page{flex:1 1 0;min-width:0}
+.cluster{left:30px;right:30px;bottom:22px;height:286px}
+.cluster img{width:132px;height:132px}
+.brand .tag{left:34px}
+.page{flex:none;width:calc((100% - 34px) / 2)}
+.cluster{height:272px;bottom:20px}
+.cluster{height:262px;bottom:14px}
