@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#EFE6D8">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<title>UNO คอแตก</title>
+<link rel="icon" href="characters/apple/emblem.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Mali:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+  <section id="s-auth" class="screen desk">
+    <div class="book">
+      <div class="page left"><div class="brand"></div><div class="cluster"></div></div>
+      <div class="rings"></div>
+      <div class="page right lined">
+        <i class="clip"></i>
+        <h2 class="pt">เข้าเล่นกับแก๊ง</h2>
+        <div class="tabs"><button data-tab="login" class="on">เข้าสู่ระบบ</button><button data-tab="register">สมัครใหม่</button></div>
+        <input id="a-user" placeholder="ชื่อผู้ใช้" autocomplete="username" maxlength="16">
+        <input id="a-pass" type="password" placeholder="รหัสผ่าน (6 ตัวขึ้นไป)" autocomplete="current-password">
+        <p id="a-err" class="err"></p>
+        <button id="a-go" class="btn yellow">เข้าสู่ระบบ</button>
+        <button id="a-offline" class="btn ghost">ฝึกกับบอท (ไม่ต้องล็อกอิน)</button>
+      </div>
+    </div>
+    <div class="deskdeco"></div>
+  </section>
+
+  <section id="s-menu" class="screen desk">
+    <div class="book">
+      <div class="page left"><div class="brand"></div><div class="cluster"></div></div>
+      <div class="rings"></div>
+      <div class="page right lined">
+        <i class="clip"></i>
+        <h2 class="pt">สวัสดี <span class="hl" id="m-name"></span></h2>
+        <button id="m-rejoin" class="btn pink hidden"></button>
+        <button id="m-create" class="btn yellow">สร้างห้อง</button>
+        <div class="row"><input id="m-code" placeholder="รหัสห้อง" maxlength="4"><button id="m-join" class="btn cyan">เข้าห้อง</button></div>
+        <button id="m-bots" class="btn lime">เล่นกับบอททันที</button>
+        <button id="m-logout" class="btn ghost small">ออกจากระบบ</button>
+      </div>
+    </div>
+    <div class="deskdeco"></div>
+  </section>
+
+  <section id="s-lobby" class="screen paper">
+    <header class="topbar">
+      <button id="l-leave" class="round" title="ออกจากห้อง">✕</button>
+      <div class="roomcode">ห้อง <b id="l-code"></b> <button id="l-copy" class="btn tiny cyan">คัดลอกลิงก์</button></div>
+      <span id="l-mode" class="modetag"></span>
+    </header>
+    <div class="lobby">
+      <div class="slots" id="l-slots"></div>
+      <div class="side note">
+        <i class="tape"></i>
+        <div class="pick"><img id="l-preview" alt=""><div><b id="l-pname"></b><small id="l-ptitle"></small></div></div>
+        <div class="cgrid" id="l-chars"></div>
+        <div class="cardrow"><span>นามบัตร</span><div id="l-cards"></div></div>
+        <div class="rules">
+          <label><input type="checkbox" id="r-stacking"><span>ซ้อน +2 / +4</span></label>
+          <label><input type="checkbox" id="r-jumpIn"><span>ตบแทรก (ไพ่เหมือนเป๊ะลงแทรกตาได้)</span></label>
+          <label><input type="checkbox" id="r-sevenZero"><span>7 สลับมือ / 0 ส่งมือวน</span></label>
+          <b class="modes-h"><span class="hl pink">โหมดพิเศษ</span></b>
+          <label><input type="checkbox" id="r-chaos"><span>วุ่นวาย: ทุก 6 ตามีเหตุการณ์สุ่ม</span></label>
+          <label><input type="checkbox" id="r-speed"><span>สปีด: ตาละ 8 วินาที</span></label>
+        </div>
+        <div class="row"><button id="l-ready" class="btn yellow">พร้อม!</button><button id="l-start" class="btn yellow hidden">เริ่มเล่น</button></div>
+        <p id="l-hint" class="hint"></p>
+      </div>
+    </div>
+    <button class="btn stk-btn" data-stk-open title="ส่งสติกเกอร์">สติกเกอร์</button>
+  </section>
+
+  <section id="s-loading" class="screen paper">
+    <h1 class="bigtitle">กำลังเตรียมโต๊ะ…</h1>
+    <div id="ld-row" class="ldrow"></div>
+    <div class="bar"><i id="ld-bar"></i></div>
+    <p class="hint">เกมจะเริ่มเมื่อทุกคนโหลดครบ</p>
+  </section>
+
+  <section id="s-game" class="screen paper margin">
+    <div class="gdeco"></div>
+    <div id="mat"><div id="dirarrow"></div>
+      <div id="draw-pile"><div class="pile-stack"></div><b id="draw-count"></b><em id="pend-badge" class="hidden"></em></div>
+      <div id="discard"><div id="ring"></div><div id="discard-cards"></div></div>
+    </div>
+    <div id="frames"></div>
+    <div class="topbar game">
+      <div class="lefts"><button id="g-menu" class="round" title="เมนู">☰</button><button id="g-mute" class="round" title="เสียงทั้งหมด">🔊</button><button id="g-music" class="round" title="เพลง">🎵</button><button id="g-full" class="round" title="เต็มจอ">⛶</button></div>
+      
+      <div class="rights"><span id="g-room" class="roomtag"></span></div>
+    </div>
+    <div id="banner"></div>
+    <div id="hand"></div>
+    <div class="corner right actions">
+      <button id="b-catch" class="btn pink hidden">จับ UNO!</button>
+      <button id="b-pass" class="btn cyan hidden">ข้ามตา</button>
+      <button id="b-uno" class="btn yellow uno hidden">UNO!</button>
+      <div class="row2"><button id="b-sort" class="btn lime small">เรียงไพ่</button><button class="btn small stk-btn2" data-stk-open>สติกเกอร์</button></div>
+    </div>
+    <div id="fx"></div>
+    <div id="cutin"><div class="band"></div><img alt=""><div class="say"><b></b><span></span></div></div>
+    <div id="picker" class="overlay hidden"><div class="note"><i class="tape"></i><h2>เลือกสี</h2><div class="colors"><button data-c="red"></button><button data-c="yellow"></button><button data-c="green"></button><button data-c="blue"></button></div><button id="pk-cancel" class="btn ghost">ยกเลิก</button></div></div>
+    <div id="menu" class="overlay hidden"><div class="note"><i class="tape"></i><h2>เมนู</h2><button id="mn-resume" class="btn yellow">เล่นต่อ</button><button id="mn-leave" class="btn pink">ออกจากห้อง (กลับเข้ามาได้)</button></div></div>
+    <div id="over" class="overlay hidden"><div class="result"><img id="o-win" alt=""><div class="note"><i class="tape"></i><h2 id="o-title"></h2><ol id="o-list"></ol><div class="row"><button id="o-again" class="btn yellow hidden">เล่นอีกรอบ</button><button id="o-leave" class="btn ghost">ออกจากห้อง</button></div><p id="o-wait" class="hint hidden">รอเจ้าของห้องเริ่มรอบใหม่…</p></div></div></div>
+    <div id="startbanner" class="hidden">เริ่ม!</div>
+    <div id="bignote" class="hidden"><i class="tape"></i><b></b><span></span></div>
+  </section>
+
+  <div id="stk-tray" class="hidden"><div class="grid" id="stk-grid"></div></div>
+  <div id="stickers"></div>
+  <div id="bubbles"></div>
+  <div id="toast"></div>
+  <div id="conn" class="hidden">การเชื่อมต่อหลุด กำลังต่อใหม่…</div>
+</div></div>
+<div id="rotate"><div class="phone">📱</div><p>หมุนจอเป็นแนวนอนเพื่อเล่น</p></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/audio.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
