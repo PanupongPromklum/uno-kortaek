@@ -15,7 +15,7 @@ FORCE = '--force' in sys.argv
 
 async def main():
     ids = json.load(open(os.path.join(ROOT, 'manifest.json'), encoding='utf-8'))['characters']
-    total = 0
+    total = 0; failed = []
     for cid in ids:
         f = os.path.join(ROOT, cid, 'character.json')
         c = json.load(open(f, encoding='utf-8'))
@@ -27,16 +27,23 @@ async def main():
             for i, text in enumerate(lines):
                 name = f'{ev}_{i + 1}.mp3'; out = os.path.join(vdir, name)
                 if FORCE or not os.path.exists(out):
-                    for attempt in range(3):
-                        try:
-                            await edge_tts.Communicate(text, voice, rate=rate, pitch=pitch).save(out); break
-                        except Exception as e:
-                            print('  retry', name, e); await asyncio.sleep(2)
-                    total += 1
-                    print(f'{c["name"]:>10}  {name:<14} {text}')
+                    ok = False
+                    # ลองด้วยเสียง/ค่าที่ตั้งไว้ ถ้าไม่ได้ ถอยไปใช้เสียงมาตรฐาน
+                    for v, r, p in ((voice, rate, pitch), ('th-TH-PremwadeeNeural', rate, pitch), ('th-TH-PremwadeeNeural', '+0%', '+0Hz')):
+                        for attempt in range(2):
+                            try:
+                                await edge_tts.Communicate(text, v, rate=r, pitch=p).save(out); ok = True; break
+                            except Exception as e:
+                                print('  retry', name, v, e); await asyncio.sleep(1)
+                        if ok: break
+                    if ok:
+                        total += 1; print(f'{c["name"]:>10}  {name:<14} {text}')
+                    else:
+                        failed.append(f'{cid}/{name}'); print(f'{c["name"]:>10}  {name:<14} ล้มเหลว')
                 if os.path.exists(out): vmap.setdefault(ev, []).append(name)
         c['voice'] = vmap
         json.dump(c, open(f, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+    if failed: print(f'\n!! ล้มเหลว {len(failed)} ไฟล์ (เช็กอินเทอร์เน็ต/ลอง pip install -U edge-tts)')
     print(f'\nเสร็จ สร้างใหม่ {total} ไฟล์  → ส่งโฟลเดอร์นี้ขึ้น GitHub (หรือบอก Claude ให้ push ให้)')
 
 asyncio.run(main())

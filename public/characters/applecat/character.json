@@ -81,7 +81,7 @@
     "pitch": 1.3,
     "rate": 0.95,
     "gender": "f",
-    "edge": "th-TH-AcharaNeural",
+    "edge": "th-TH-PremwadeeNeural",
     "edgeRate": "-5%",
     "edgePitch": "+25Hz"
   }

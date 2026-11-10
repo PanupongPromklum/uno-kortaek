@@ -14,12 +14,12 @@
 ## เสียงแต่ละตัว (Edge TTS)
 | ตัว | เสียง | ความเร็ว | ระดับเสียง |
 |---|---|---|---|
-| เหมียวแอป | th-TH-AcharaNeural | -5% | +25Hz |
+| เหมียวแอป | th-TH-PremwadeeNeural | -5% | +25Hz |
 | แอปปี้ | th-TH-PremwadeeNeural | +10% | +40Hz |
 | นกนวล | th-TH-NiwatNeural | -10% | -10Hz |
 | ชูหมี | th-TH-PremwadeeNeural | +0% | +60Hz |
 | ข้าวโพด | th-TH-NiwatNeural | +20% | +45Hz |
-| พิซซี่ | th-TH-AcharaNeural | +12% | +0Hz |
+| พิซซี่ | th-TH-PremwadeeNeural | +12% | +0Hz |
 
 ## สถานการณ์ (event) — สุ่ม 1 ใน 3 ประโยคทุกครั้ง
 | event | ใช้ตอน |
